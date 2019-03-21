@@ -49,12 +49,12 @@ class AppCard extends Component {
                 >
                 <View style={styles.Content}>
                     {
-                        products.map((product, index)=>
+                        products.map((item, index)=>
                             <View key={index}>
                                 <Card
-                                    title={product.name}
-                                    productimage={product.pic}
-                                    productprice={product.price}
+                                    title={item.name}
+                                    productimage={item.pic}
+                                    productprice={item.price}
                                 />
                             </View>
                         )

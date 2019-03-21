@@ -1,47 +1,77 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, FlatList } from 'react-native';
 import AppHeader from '../child/Header';
 import Card from '../child/Card';
 
 
 export default class List extends Component {
   state = {
-    cardData: {
-      name: 'Apple',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
-      price: '5.000.000'
-    }
+    cardData: [
+      {
+        id: '001',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '002',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '003',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '004',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '005',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '006',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      },
+      {
+        id: '007',
+        name: 'Apple',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81dfzyJih3L._SX466_.jpg',
+        price: '5.000.000'
+      }
+    ]
   }
   render() {
+    const { cardData } = this.state
     return (
       <View>
         <AppHeader 
             judul="List"
         />
-        <ScrollView>
-            <View style={styles.Content}>
-              <Card
-                  title={this.state.cardData.name}
-                  productimage={this.state.cardData.img}
-                  productprice={this.state.cardData.price}
+              <View>
+              <FlatList
+                  data={cardData}
+                  renderItem={ ({item}) =>
+                    <Card
+                        title={item.name}
+                        productimage={item.img}
+                        productprice={item.price}
+                    />
+                  }
+                  keyExtractor={item => item.id}
               />
-              <Card
-                  title={this.state.cardData.name}
-                  productimage={this.state.cardData.img}
-                  productprice={this.state.cardData.price}
-              />
+              </View>
             </View>
-        </ScrollView>
-      </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  Content:{
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent:'center',
-      flexWrap: 'wrap'
-  }
-})
